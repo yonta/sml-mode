@@ -256,7 +256,16 @@ notion of \"the end of an outline\".")
                  "infixr" "let" "local" "nonfix" "o" "of" "op" "open" "orelse"
                  "overload" "raise" "rec" "sharing" "sig" "signature"
                  "struct" "structure" "then" "type" "val" "where" "while"
-                 "with" "withtype"))
+                 "with" "withtype"
+                 ;; SML# extentions
+                 "all" "asc" "begin" "by" "commit" "default" "delete" "desc"
+                 "distinct" "from" "insert" "into" "order" "rollback" "select"
+                 "update" "use" "values"
+                 "_NULL" "_attribute" "_builtin" "_ffiapply" "_foreach"
+                 "_import" "_interface" "_join" "_json" "_jsoncase" "_polyrec"
+                 "_require" "_sizeof" "_sql" "_sqleval" "_sqlexec" "_sqlserver"
+                 "_typeof" "_use"
+                 ))
   "A regexp that matches any and all keywords of SML.")
 
 (eval-and-compile
