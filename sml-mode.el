@@ -263,14 +263,17 @@ notion of \"the end of an outline\".")
                  "overload" "raise" "rec" "sharing" "sig" "signature"
                  "struct" "structure" "then" "type" "val" "where" "while"
                  "with" "withtype"
-                 ;; SML# extentions
-                 "all" "asc" "begin" "by" "commit" "default" "delete" "desc"
-                 "distinct" "from" "insert" "into" "order" "rollback" "select"
+                 ;; SML# v4.0 extentions
+                 "__attribute__" "_builtin" "_dynamic" "_dynamiccase"
+                 "_dynamicnull" "_dynamicvoid" "_extend" "_foreach" "_import"
+                 "_interface" "_join" "_polyrec" "_reifyTy" "_require" "_sizeof"
+                 "_sql" "_sqleval" "_sqlexec" "_sqlserver" "_update" "_use"
+                 "all" "asc" "begin" "by" "commit" "cross" "default" "delete"
+                 "desc" "distinct" "do" "exists" "false" "fetch" "first" "from"
+                 "group" "having" "inner" "insert" "into" "is" "join" "limit"
+                 "natural" "next" "not" "null" "offset" "on" "only" "or" "order"
+                 "rollback" "row" "rows" "select" "set" "true" "unknown"
                  "update" "use" "values"
-                 "_NULL" "_attribute" "_builtin" "_ffiapply" "_foreach"
-                 "_import" "_interface" "_join" "_json" "_jsoncase" "_polyrec"
-                 "_require" "_sizeof" "_sql" "_sqleval" "_sqlexec" "_sqlserver"
-                 "_typeof" "_use"
                  ))
   "A regexp that matches any and all keywords of SML.")
 
