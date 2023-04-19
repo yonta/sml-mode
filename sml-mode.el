@@ -542,13 +542,17 @@ Regexp match data 0 points to the chars."
           (forward-line 1))
         (>= mincol startcol)))))
 
+(defcustom sml-struct-indent-level 0
+  "Basic indentation step for SML code between `struct' and `end'."
+  :type 'integer)
+
 (defun sml-smie-rules (kind token)
   (pcase (cons kind token)
     (`(:elem . basic) sml-indent-level)
     (`(:elem . args)  sml-indent-args)
     (`(:list-intro . "fn") t)
     (`(:close-all . ,_) t)
-    (`(:after . "struct") 0)
+    (`(:after . "struct") sml-struct-indent-level)
     (`(:after . "=>") (if (smie-rule-hanging-p) 0 2))
     (`(:after . "in") (if (smie-rule-parent-p "local") 0))
     (`(:after . "of") 3)
