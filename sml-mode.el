@@ -479,7 +479,9 @@ Regexp match data 0 points to the chars."
               (decls "sharing" decls)
               (decls "exception" decls)
               (decls "fun" decls)
-              (decls "val" decls))
+              (decls "val" decls)
+              ;; SML# Extention
+              (decls "_require" decls))
        (type (type "->" type)
              (type "*" type))
        (funbranches (sexp "d=" exp))
