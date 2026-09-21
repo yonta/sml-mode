@@ -568,6 +568,34 @@ Regexp match data 0 points to the chars."
     ;; FIXME: pcase in Emacs<24.4 bumps into a bug if we do this:
     ;;(`(:before . ,(and `"|" (guard (smie-rule-prev-p "of")))) 1)
     (`(:before . "|") (if (smie-rule-prev-p "of") 1 (smie-rule-separator kind)))
+    (`(:before . "d|")
+     (let ((parent (smie-indent--parent)))
+       (when (equal (nth 2 parent) "d=")
+         (save-excursion
+           (goto-char (cadr parent))
+           (let ((d=-column (current-column))
+                 (eol (line-end-position)))
+             (sml-smie-forward-token)
+             (skip-chars-forward " \t")
+             (if (< (point) eol)
+                 ;; datatype T = A
+                 ;;            | B
+                 (cons 'column d=-column)
+
+               ;; datatype T =
+               ;;     A
+               ;;   | B
+               (let ((grandparent
+                      (progn
+                        (goto-char (cadr parent))
+                        (smie-backward-sexp "d="))))
+                 (when (equal (nth 2 grandparent) "datatype")
+                   (goto-char (cadr grandparent))
+                   (cons 'column
+                         (+ (smie-indent-virtual)
+                            (max 0
+                                 (- sml-indent-level
+                                    sml-indent-separator-outdent))))))))))))
     (`(:before . ,(or `"|" `"d|" `";" `",")) (smie-rule-separator kind))
     ;; Treat purely syntactic block-constructs as being part of their parent,
     ;; when the opening statement is hanging.
