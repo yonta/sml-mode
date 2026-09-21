@@ -560,7 +560,9 @@ Regexp match data 0 points to the chars."
     (`(:after . "else") (if (smie-rule-hanging-p) 0)) ;; (:next "if" 0)
     (`(:after . ,(or `"|" `"d|" `";" `",")) (smie-rule-separator kind))
     (`(:after . "d=")
-     (if (and (smie-rule-parent-p "val") (smie-rule-next-p "fn")) -3))
+     (if (smie-rule-parent-p "structure" "signature" "functor")
+         (smie-rule-parent 0)
+       (smie-rule-parent sml-indent-level)))
     (`(:before . "=>") (if (smie-rule-parent-p "fn") 3))
     (`(:before . "of") 1)
     ;; FIXME: pcase in Emacs<24.4 bumps into a bug if we do this:
