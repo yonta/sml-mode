@@ -597,6 +597,9 @@ Regexp match data 0 points to the chars."
                                  (- sml-indent-level
                                     sml-indent-separator-outdent))))))))))))
     (`(:before . ,(or `"|" `"d|" `";" `",")) (smie-rule-separator kind))
+    (`(:before . "(")
+     (cond ((smie-rule-parent-p "functor") (smie-rule-parent sml-indent-level))
+           ((smie-rule-hanging-p) (smie-rule-parent))))
     ;; Treat purely syntactic block-constructs as being part of their parent,
     ;; when the opening statement is hanging.
     (`(:before . ,(or `"let" `"(" `"[" `"{")) ; "struct"? "sig"?
