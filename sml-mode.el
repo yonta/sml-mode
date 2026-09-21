@@ -555,7 +555,7 @@ Regexp match data 0 points to the chars."
     (`(:after . "struct") sml-struct-indent-level)
     (`(:after . "=>") (if (smie-rule-hanging-p) 0 2))
     (`(:after . "in") (if (smie-rule-parent-p "local") 0))
-    (`(:after . "of") 3)
+    (`(:after . "of") sml-indent-level)
     (`(:after . ,(or `"(" `"{" `"[")) (if (not (smie-rule-hanging-p)) 2))
     (`(:after . "else") (if (smie-rule-hanging-p) 0)) ;; (:next "if" 0)
     (`(:after . ,(or `"|" `"d|" `";" `",")) (smie-rule-separator kind))
@@ -564,7 +564,7 @@ Regexp match data 0 points to the chars."
          (smie-rule-parent 0)
        (smie-rule-parent sml-indent-level)))
     (`(:before . "=>") (if (smie-rule-parent-p "fn") 3))
-    (`(:before . "of") 1)
+    (`(:before . "of") 0)
     ;; FIXME: pcase in Emacs<24.4 bumps into a bug if we do this:
     ;;(`(:before . ,(and `"|" (guard (smie-rule-prev-p "of")))) 1)
     (`(:before . "|") (if (smie-rule-prev-p "of") 1 (smie-rule-separator kind)))
