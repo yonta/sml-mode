@@ -499,7 +499,7 @@ Regexp match data 0 points to the chars."
      '((assoc "->") (assoc "*"))
      '((assoc "val" "fun" "type" "datatype" "abstype" "open" "infix" "infixr"
               "nonfix" "functor" "signature" "structure" "exception"
-              "include" "sharing" "local")
+              "include" "sharing" "local" "_require")
        (assoc "withtype")
        (assoc "and"))
      '((assoc "orelse") (assoc "andalso") (nonassoc ":"))
